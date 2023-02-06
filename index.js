@@ -26,7 +26,9 @@ console.log(result);
 
 async function getCourses() {
     const courses = await Course.find(); // all courses
-    const course = await Course.find({ tags: 'node' }); // filter for specific course(s)
+    const course = await Course.find({ tags: 'node' }) // filter for specific course(s)
+    //.limit(10) // would limit the results to 10
+    //.sort({ name: 1 }) // would sort by name in ascending order (-1 is desecending) 
     console.log(course);
 }
 

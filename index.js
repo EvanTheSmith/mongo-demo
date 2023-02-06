@@ -11,9 +11,11 @@ const courseSchema = new mongoose.Schema({
     isPublished: Boolean
 });
 
-const Course = mongoose.model('Course', courseSchema); // Paschal case (capitalized first letter)
-const course = new Course({ // Camel Case (lowercase first letter)
+const Course = mongoose.model('Course', courseSchema); // creates a class from the schema using mongoose
+
+const course = new Course({ // creates an individual course from the class
     name: 'Node.js Course',
     author: 'Mosh',
-    tags: ['node', 'backend'] // this complex value is only possible in a document/noSQL database like MongoDB
+    tags: ['node', 'backend'], // this complex value is only possible in a document/noSQL database like MongoDB
+    isPublished: true
 });

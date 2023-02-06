@@ -24,4 +24,9 @@ const result = await course.save(); // save to database asynchronously; use awai
 console.log(result);
 }
 
-createCourse();
+async function getCourses() {
+    const courses = await Course.find();
+    console.log(courses);
+}
+
+getCourses();

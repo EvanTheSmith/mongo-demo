@@ -25,8 +25,9 @@ console.log(result);
 }
 
 async function getCourses() {
-    const courses = await Course.find();
-    console.log(courses);
+    const courses = await Course.find(); // all courses
+    const course = await Course.find({ tags: 'node' }); // filter for specific course(s)
+    console.log(course);
 }
 
 getCourses();

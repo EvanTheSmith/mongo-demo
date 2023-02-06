@@ -29,6 +29,7 @@ async function getCourses() {
     const course = await Course.find({ tags: 'node' }) // filter for specific course(s)
     //.limit(10) // would limit the results to 10
     //.sort({ name: 1 }) // would sort by name in ascending order (-1 is desecending) 
+    // .select({ name: 1 }); // would only select name property from resulting object(s)
     console.log(course);
 }
 

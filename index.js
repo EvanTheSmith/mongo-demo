@@ -27,24 +27,8 @@ console.log(result);
 async function getCourses() {
     const courses = await Course // all courses
     .find()
-    .or([{ author: 'Mosh' }, { isPublished: true }]) // logical operator, executes after find() and takes an array of 2 objects
-    // find({ tags: 'node' }) // filter for specific course(s)
-    // .find({ price: { $gt: 10 } }) // theoretical find which would capture all courses with a price "greater than" 10
-    // .find({ price: { $in: [10, 15, 20] } }) // captures courses that have exactly 10, 15 or 20 as price
-    //.limit(10) // would limit the results to 10
-    //.sort({ name: 1 }) // would sort by name in ascending order (-1 is desecending) 
-    // .select({ name: 1 }); // would only select name property from resulting object(s)
-    console.log(course);
+    console.log(courses);
 }
 
 getCourses();
 
-// MongoDB Query Operators:
-// $eq: (equal)
-// $ne: (not equal)
-// $gt: (greater than)
-// $gte: (greater than OR equal)
-// $lt: (less than)
-// $lte: (less than OR equal)
-// $in: (in)
-// $nin: (not in)

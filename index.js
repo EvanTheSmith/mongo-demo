@@ -26,9 +26,7 @@ console.log(result);
 
 async function getCourses() {
     const courses = await Course // all courses
-    .find({ author: 'Mosh', isPublished: true })
-    .limit(10)
-    .sort({ name: 1 })
+    .find()
     .countDocuments()
     console.log(courses);
 }

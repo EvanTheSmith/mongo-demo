@@ -25,7 +25,9 @@ console.log(result);
 }
 
 async function getCourses() {
-    const courses = await Course.find(); // all courses
+    const courses = await Course // all courses
+    .find()
+    .or([{ author: 'Mosh' }, { isPublished: true }]) // logical operator, executes after find() and takes an array of 2 objects
     // find({ tags: 'node' }) // filter for specific course(s)
     // .find({ price: { $gt: 10 } }) // theoretical find which would capture all courses with a price "greater than" 10
     // .find({ price: { $in: [10, 15, 20] } }) // captures courses that have exactly 10, 15 or 20 as price

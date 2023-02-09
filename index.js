@@ -39,3 +39,7 @@ async function updateCourse(id) { // Query First Approach
     console.log(result);
 } updateCourse('63e09c8c6c661c659810a2e0');
 
+async function updateCourse(id) { // Update First Approach
+    const result = await Course.updateOne({ _id: id }, { $set: { author: 'Ricky Stadler', isPublished: false } });
+    console.log(result);
+} updateCourse('63e09c8c6c661c659810a2e0');

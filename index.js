@@ -29,7 +29,13 @@ async function getCourses() {
     .find()
     .countDocuments()
     console.log(courses);
-}
+} getCourses();
 
-getCourses();
+async function updateCourse(id) { // Query First Approach
+    const course = await Course.findById(id);
+    if (!course) return;
+    course.set({ isPublished: true, author: 'John Stamos' });
+    const result = await course.save();
+    console.log(result);
+} updateCourse('63e09c8c6c661c659810a2e0');
 

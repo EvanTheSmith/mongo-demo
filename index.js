@@ -29,4 +29,4 @@ async function getCourses() {
     .find()
     .countDocuments()
     console.log(courses);
-} getCourses();
+} getCourses()

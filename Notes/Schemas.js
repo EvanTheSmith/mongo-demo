@@ -17,3 +17,5 @@ const courseSchema = new mongoose.Schema({
     date: { type: Date, default: Date.now },
     isPublished: Boolean
 });
+
+// MongoDB does NOT care about validations; only Mongoose does

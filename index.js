@@ -4,7 +4,7 @@ mongoose.connect('mongodb://localhost/playground', { useNewUrlParser: true, useU
 .catch((error) => console.log('Error: ', error.message)); // or log error if not
 
 const courseSchema = new mongoose.Schema({
-    name: String,
+    name: { type: String, required: true },
     author: String,
     tags: [ String ],
     date: { type: Date, default: Date.now },
@@ -15,7 +15,7 @@ const Course = mongoose.model('Course', courseSchema); // creates a class from t
 
 async function createCourse() {
 const course = new Course({ // creates an individual course from the class
-    name: 'Angular Course',
+    // name: 'Angular Course',
     author: 'Mosh',
     tags: ['angular', 'frontend'], // this complex value is only possible in a document/noSQL database like MongoDB
     isPublished: true
@@ -24,9 +24,11 @@ const result = await course.save(); // save to database asynchronously; use awai
 console.log(result);
 }
 
-async function getCourses() {
-    const courses = await Course // all courses
-    .find()
-    .countDocuments()
-    console.log(courses);
-} getCourses()
+createCourse();
+
+// async function getCourses() {
+//     const courses = await Course // all courses
+//     .find()
+//     .countDocuments()
+//     console.log(courses);
+// } getCourses()

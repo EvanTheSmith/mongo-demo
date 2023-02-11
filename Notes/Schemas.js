@@ -1,6 +1,6 @@
 // MongoDB does NOT care about validations; only Mongoose does
 
-// No Validations
+// NO VALIDATIONS ///////////////////////////////////////////////////////////
 const courseSchema1 = new mongoose.Schema({
     name: String,
     author: String,
@@ -14,7 +14,7 @@ const courseSchema2 = new mongoose.Schema({
     name: { type: String, required: true }, // pass object instead of value
 });
 
-// Conditional Validations
+// CONDITIONAL VALIDATIONS //////////////////////////////////////////////////
 
 // price required IF isPublished
 const courseSchema3 = new mongoose.Schema({

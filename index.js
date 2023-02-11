@@ -20,8 +20,13 @@ const course = new Course({ // creates an individual course from the class
     tags: ['angular', 'frontend'], // this complex value is only possible in a document/noSQL database like MongoDB
     isPublished: true
 });
-const result = await course.save(); // save to database asynchronously; use await to wait for result
-console.log(result);
+ try {
+    const result = await course.save(); // save to database asynchronously; use await to wait for result
+    console.log(result);
+ }
+ catch(exception) {
+    console.log(exception);
+ }
 }
 
 createCourse();

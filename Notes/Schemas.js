@@ -43,3 +43,19 @@ const courseSchema3 = new mongoose.Schema({
         max: 100
     }
 });
+
+// CUSTOM VALIDATIONS ///////////////////////////////////////////////////////
+
+// tag array must have at least one value
+const courseSchema4 = new mongoose.Schema({
+    tags: {
+        type: Array,
+        validate: {
+            validator: function(value) {
+                // return value.length>0; // null value would cause error
+                return value && value.length>0; // prevents null values from causing error
+            }
+        },
+        message: 'a course must have at least one tag'
+    }
+});

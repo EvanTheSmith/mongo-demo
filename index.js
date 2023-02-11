@@ -6,6 +6,11 @@ mongoose.connect('mongodb://localhost/playground', { useNewUrlParser: true, useU
 const courseSchema = new mongoose.Schema({
     name: { type: String, required: true },
     author: String,
+    category: {
+        type: String,
+        required: true,
+        enum: ['one', 'two', 'three']
+    },
     tags: [ String ],
     date: { type: Date, default: Date.now },
     isPublished: Boolean
@@ -16,6 +21,7 @@ const Course = mongoose.model('Course', courseSchema); // creates a class from t
 async function createCourse() {
 const course = new Course({ // creates an individual course from the class
     // name: 'Angular Course',
+    // category: 'one',
     author: 'Mosh',
     tags: ['angular', 'frontend'], // this complex value is only possible in a document/noSQL database like MongoDB
     isPublished: true
@@ -25,7 +31,9 @@ const course = new Course({ // creates an individual course from the class
     console.log(result);
  }
  catch(exception) { // block is executed in event of validation error or any failure in try block
-    console.log(exception.message);
+    for (error in exception.errors) {
+        console.log(exception.errors[error].message);
+    }
  }
 }
 

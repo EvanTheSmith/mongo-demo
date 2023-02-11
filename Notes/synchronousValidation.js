@@ -11,7 +11,7 @@ const courseSchema4 = new mongoose.Schema({
     }
 });
 
-// ASYNCHRONOUS
+// A-SYNCHRONOUS
 const courseSchema4 = new mongoose.Schema({
     tags: {
         type: Array,

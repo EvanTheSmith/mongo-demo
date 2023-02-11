@@ -14,11 +14,22 @@ const courseSchema2 = new mongoose.Schema({
     name: { type: String, required: true }, // pass object instead of value
 });
 
-// Conditional Validation
+// Conditional Validations
+
+// price required IF isPublished
 const courseSchema3 = new mongoose.Schema({
     isPublished: Boolean,
     price: {
         type: Number,
-        required: function() { return this.isPublished; } // price is required IF isPublished is true
+        required: function() { return this.isPublished; }
+    }
+});
+
+// price required IF isPublished
+const courseSchema3 = new mongoose.Schema({
+    category: {
+        type: String,
+        required: true,
+        enum: ['one', 'two', 'three']
     }
 });

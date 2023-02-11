@@ -1,6 +1,7 @@
-// No Validations
+// MongoDB does NOT care about validations; only Mongoose does
 
-const courseSchema = new mongoose.Schema({
+// No Validations
+const courseSchema1 = new mongoose.Schema({
     name: String,
     author: String,
     tags: [ String ],
@@ -9,13 +10,15 @@ const courseSchema = new mongoose.Schema({
 });
 
 // Validation on Name
-
-const courseSchema = new mongoose.Schema({
+const courseSchema2 = new mongoose.Schema({
     name: { type: String, required: true }, // pass object instead of value
-    author: String,
-    tags: [ String ],
-    date: { type: Date, default: Date.now },
-    isPublished: Boolean
 });
 
-// MongoDB does NOT care about validations; only Mongoose does
+// Conditional Validation
+const courseSchema3 = new mongoose.Schema({
+    isPublished: Boolean,
+    price: {
+        type: Number,
+        required: function() { return this.isPublished; } // price is required IF isPublished is true
+    }
+});

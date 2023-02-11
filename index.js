@@ -21,11 +21,12 @@ const course = new Course({ // creates an individual course from the class
     isPublished: true
 });
  try {
+    await course.validate();
     const result = await course.save(); // save to database asynchronously; use await to wait for result
     console.log(result);
  }
  catch(exception) {
-    console.log(exception);
+    console.log(exception.message);
  }
 }
 

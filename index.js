@@ -21,11 +21,10 @@ const course = new Course({ // creates an individual course from the class
     isPublished: true
 });
  try {
-    await course.validate();
     const result = await course.save(); // save to database asynchronously; use await to wait for result
     console.log(result);
  }
- catch(exception) {
+ catch(exception) { // block is executed in event of validation error or any failure in try block
     console.log(exception.message);
  }
 }

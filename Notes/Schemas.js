@@ -25,11 +25,21 @@ const courseSchema3 = new mongoose.Schema({
     }
 });
 
-// price required IF isPublished
+// category must be one of the values in the array
 const courseSchema3 = new mongoose.Schema({
     category: {
         type: String,
         required: true,
         enum: ['one', 'two', 'three']
+    }
+});
+
+// price must be no lower than 10 and no higher than 100
+const courseSchema3 = new mongoose.Schema({
+    category: {
+        type: Number,
+        required: true,
+        min: 10,
+        max: 100
     }
 });

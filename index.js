@@ -11,6 +11,11 @@ const courseSchema = new mongoose.Schema({
         required: true,
         enum: ['one', 'two', 'three']
     },
+    price: {
+        type: Number,
+        get: v => Math.round(v), // this one isn't working for unknown reasons
+        set: v => Math.round(v)
+    },
     tags: [ String ],
     date: { type: Date, default: Date.now },
     isPublished: Boolean
@@ -20,10 +25,11 @@ const Course = mongoose.model('Course', courseSchema); // creates a class from t
 
 async function createCourse() {
 const course = new Course({ // creates an individual course from the class
-    // name: 'Angular Course',
-    // category: 'one',
-    author: 'Mosh',
-    tags: ['angular', 'frontend'], // this complex value is only possible in a document/noSQL database like MongoDB
+    name: 'Angular Course',
+    category: 'one',
+    price: '15.5',
+    author: 'Evan',
+    tags: ['SQL', 'backend'], // this complex value is only possible in a document/noSQL database like MongoDB
     isPublished: true
 });
  try {
@@ -37,11 +43,9 @@ const course = new Course({ // creates an individual course from the class
  }
 }
 
-createCourse();
+async function getCourse(id) {
+    const course = await Course.findById(id);
+    console.log(course);
+}
 
-// async function getCourses() {
-//     const courses = await Course // all courses
-//     .find()
-//     .countDocuments()
-//     console.log(courses);
-// } getCourses()
+getCourse('63e829d051f2419124e7db98');
